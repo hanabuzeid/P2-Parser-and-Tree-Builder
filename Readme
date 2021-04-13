@@ -1,0 +1,45 @@
+-------------------------------------------------------------------------------
+
+Invocation:
+    frontEnd [file]
+	- To read from stdin or file name which is p2g1-6 given examples
+
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+
+HOW TO RUN P2
+	- In your command prompt, type: make
+	- This will generate .o file and executable file
+	- To use the program, type: ./frontEnd [file]
+
+-------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------
+
+Examples of invocations
+
+	./frontEnd ---> then it will be blank to ask for your input
+    /frontEnd p2g3 
+
+ ------------------------------------------------------------------------------
+
+BNF for P2:
+<program>  ->     <vars> main <block>
+<block>       ->      begin <vars> <stats> end
+<vars>         ->      empty | data Identifier :=  Integer  ;  <vars> 
+<expr>        ->      <N> - <expr>  | <N>
+<N>             ->       <A> / <N> | <A> * <N> | <A>
+<A>             ->        <M> + <A> | <M>
+<M>              ->     * <M> |  <R>
+<R>              ->      ( <expr> ) | Identifier | Integer
+<stats>         ->      <stat>  <mStat>
+<mStat>       ->      empty |  <stat>  <mStat>
+<stat>           ->      <in> ;  | <out> ;  | <block> | <if> ;  | <loop> ;  | <assign> ; | <goto> ; | <label> ;
+<in>              ->      getter  Identifier  
+<out>            ->      outter <expr>
+<if>               ->      if [ <expr> <RO> <expr> ] then <stat>
+<loop>          ->      loop  [ <expr> <RO> <expr> ]  <stat>
+<assign>       ->      assign Identifier  := <expr>  
+<RO>            ->       =>  | =< |  ==  |   [ == ]  (three tokens)  | %
+<label>          ->    void Identifier
+<goto>           ->    proc Identifier
